@@ -1,37 +1,35 @@
-// TASK 1: Loading State  |  TASK 2: No Results Found
 function Gallery({ images, loading }) {
-
-  // TASK 1: Loading spinner dikhao
   if (loading) {
     return (
-      <div className="status-box">
-        <div className="spinner"></div>
-        <p>Loading...</p>
+      <div className="loading-state">
+        <div className="loading-spinner"></div>
+        <p className="loading-text">Curating images...</p>
       </div>
     )
   }
 
-  // TASK 2: No images found message
   if (images.length === 0) {
     return (
-      <div className="status-box">
-        <span className="no-result-icon">🔍</span>
-        <p>No images found</p>
+      <div className="empty-state">
+        <div className="empty-icon">◎</div>
+        <p className="empty-title">No images found</p>
+        <p className="empty-sub">Try a different search term</p>
       </div>
     )
   }
 
   return (
-    <div className="gallery-grid">
+    <div className="gallery">
       {images.map((img) => (
-        <div key={img.id} className="gallery-card">
+        <div key={img.id} className="gallery-item">
           <img
             src={img.urls.small}
-            alt={img.alt_description || 'Unsplash image'}
+            alt={img.alt_description || 'Photo'}
             loading="lazy"
           />
-          <div className="card-overlay">
-            <span> {img.user.name}</span>
+          <div className="gallery-overlay">
+            <div className="overlay-line"></div>
+            <span className="overlay-name">{img.user.name}</span>
           </div>
         </div>
       ))}

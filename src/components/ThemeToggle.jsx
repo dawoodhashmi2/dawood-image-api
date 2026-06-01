@@ -1,13 +1,12 @@
-// TASK 4: Dark / Light theme toggle button
 function ThemeToggle({ theme, setTheme }) {
   return (
     <button
       className="theme-btn"
-      onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     >
-      {theme === 'light' ? ' Dark' : ' Light'}
+      <span className="icon">{theme === 'dark' ? '○' : '●'}</span>
+      {theme === 'dark' ? 'Light' : 'Dark'}
     </button>
   )
 }
-
 export default ThemeToggle
